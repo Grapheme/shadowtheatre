@@ -29,6 +29,8 @@ app = express()
 server = http.createServer(app)
 io = socketio.listen(server)
 
+io.set "log level", 0
+
 
 ###
 # Настройка middleware
@@ -68,9 +70,8 @@ app.post "/password", (req, res, next) ->
 # Socket.io stuff
 ###
 
-# io.sockets.on("connection", function(socket) {
-#   socket.on("move", function(data) {
-#     socket.broadcast.emit("actuate", data);
-#   });
-# });
-
+io.sockets.on "connection", (socket) ->
+	i = 0
+	setInterval ->
+		socket.emit "message", "Привет #{++i}"
+	, 2000

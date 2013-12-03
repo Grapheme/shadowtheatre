@@ -1,0 +1,15 @@
+
+.notification-area {
+	width  : 50%;
+	text-align: center;
+	font-size: 5em;
+	font-weight: 600;
+
+	margin: auto;
+	position: absolute;
+	top: 50%; left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	  -ms-transform: translate(-50%,-50%);
+	      transform: translate(-50%,-50%);
+}
+
