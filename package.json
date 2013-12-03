@@ -7,5 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "molefrog@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "coffee-script": "~1.6.3",
+    "forever": "~0.10.9"
+  },
+  "dependencies": {
+    "underscore": "~1.5.2",
+    "nconf": "~0.6.9",
+    "express": "~3.4.6",
+    "socket.io": "~0.9.16",
+    "ua-parser-js": "~0.6.2"
+  }
 }

@@ -1,0 +1,61 @@
+<html>
+	<head>	
+	   	<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Театр Теней</title>
+
+        <meta name="description" content="The Shadow Theatre">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+		<!-- 3rd party stylesheets -->
+		<link rel="stylesheet" href="vendor/styles/pure.min.css" />
+   		<link rel="stylesheet" href="vendor/styles/animate.min.css" />
+		<link rel="stylesheet" href="vendor/styles/opentip.css" />
+
+		<!-- 3rd party libraries -->
+		<script type="text/javascript" src="vendor/scripts/jquery.min.js"></script>
+		<script type="text/javascript" src="vendor/scripts/underscore.min.js"></script>
+		<script type="text/javascript" src="vendor/scripts/backbone.min.js"></script>
+   		<script type="text/javascript" src="vendor/scripts/jquery.knob.js"></script>
+   		<script type="text/javascript" src="vendor/scripts/jquery.inputmask.js"></script>
+   		<script type="text/javascript" src="vendor/scripts/opentip-jquery.min.js"></script>
+
+   		<!-- Web Fonts -->
+   		<link rel="stylesheet" href="fonts/Unicum/stylesheet.css" />
+		
+   		<!-- Application styles -->
+
+		<link rel="stylesheet" href="styles/main.css" />
+		<link rel="stylesheet" href="styles/fonts.css" />
+	</head>
+    <body>
+
+   	<div class="pure-g">
+   	<div class="pure-u-1-2">
+
+	<form class="pure-form" action="javascript:void(0)">
+	    <fieldset>
+			<input type="text" class="pure-input-1" placeholder="Username">
+		</fieldset>
+	    <button type="submit" class="pure-button pure-input-1 pure-button-primary">Пароль</button>
+	</form>
+
+	</div>
+	</div>
+
+	<script>
+		$(function() {
+			$(".pure-button").click(function() {
+				$(".pure-form").addClass("animated wobble");
+				setTimeout(function() {
+					$(".pure-form").removeClass("animated wobble");
+				}, 2000);
+			});
+		});
+	</script>
+	
+    </body>
+</html>
