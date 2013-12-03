@@ -27,35 +27,25 @@
    		<link rel="stylesheet" href="fonts/Unicum/stylesheet.css" />
 		
    		<!-- Application styles -->
-
 		<link rel="stylesheet" href="styles/main.css" />
 		<link rel="stylesheet" href="styles/fonts.css" />
+
+		<script src="scripts/main.js"></script>
 	</head>
     <body>
 
    	<div class="pure-g">
-   	<div class="pure-u-1-2">
+	   	<div class="pure-u-1-2">
 
-	<form class="pure-form" action="javascript:void(0)">
-	    <fieldset>
-			<input type="text" class="pure-input-1" placeholder="Username">
-		</fieldset>
-	    <button type="submit" class="pure-button pure-input-1 pure-button-primary">Пароль</button>
-	</form>
+		<form class="pure-form" action="javascript:void(0)">
+		    <fieldset>
+				<input type="text" class="password-input pure-input-1" placeholder="Username">
+			</fieldset>
+		    <button type="submit" class="login-button pure-button pure-input-1 pure-button-primary">Пароль</button>
+		</form>
 
+		</div>
 	</div>
-	</div>
 
-	<script>
-		$(function() {
-			$(".pure-button").click(function() {
-				$(".pure-form").addClass("animated wobble");
-				setTimeout(function() {
-					$(".pure-form").removeClass("animated wobble");
-				}, 2000);
-			});
-		});
-	</script>
-	
     </body>
 </html>

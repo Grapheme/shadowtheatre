@@ -33,6 +33,8 @@ io = socketio.listen(server)
 ###
 # Настройка middleware
 ###
+app.use express.logger "short"
+app.use express.bodyParser()
 app.use app.router
 app.use express.static( __dirname + "/public" )
 
@@ -52,6 +54,15 @@ app.get "/", (req, res) ->
 		res.sendfile __dirname + "/public/operator.html"
 	else
 		res.sendfile __dirname + "/public/index.html" 
+
+###
+# Проверка пароля
+###
+app.post "/password", (req, res, next) ->
+	if req.body.password in config.get("passwords")
+		return res.json {}
+
+	return next new Error "Wrong password!"
 
 ###
 # Socket.io stuff
