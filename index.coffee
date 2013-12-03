@@ -50,10 +50,10 @@ app.get "/", (req, res) ->
 	ua = req.headers['user-agent']
 	result = parser.setUA(ua).getResult()
 
-	if result.device.type 
-		res.sendfile __dirname + "/public/operator.html"
+	if result.device.type
+		res.sendfile __dirname + "/public/index.html"  
 	else
-		res.sendfile __dirname + "/public/index.html" 
+		res.sendfile __dirname + "/public/operator.html"
 
 ###
 # Проверка пароля
