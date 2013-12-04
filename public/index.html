@@ -1,60 +1,94 @@
 <html>
 	<head>	
-	   	<meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      
       <title>Театр Теней</title>
 
-      <meta name="description" content="The Shadow Theatre">
+      <meta name="description" content="">
+      <meta name="viewport" content="width=960px, user-scalable=no">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="format-detection" content="telephone=no">
 
   		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
       <!-- 3rd party stylesheets -->
-      <link rel="stylesheet" href="vendor/styles/pure.min.css" />
+      <link rel="stylesheet" href="vendor/styles/normalize.min.css" />
       <link rel="stylesheet" href="vendor/styles/animate.min.css" />
-      <link rel="stylesheet" href="vendor/styles/opentip.css" />
+      <link rel="stylesheet" href="styles/h5bp.css" />
+      <link rel="stylesheet" href="styles/fonts.css" />
+      <link rel="stylesheet" href="styles/app.css" />
 
       <!-- 3rd party libraries -->
       <script type="text/javascript" src="vendor/scripts/jquery.min.js"></script>
-      <script type="text/javascript" src="vendor/scripts/underscore.min.js"></script>
-      <script type="text/javascript" src="vendor/scripts/backbone.min.js"></script>
-      <script type="text/javascript" src="vendor/scripts/jquery.knob.js"></script>
       <script type="text/javascript" src="vendor/scripts/jquery.inputmask.js"></script>
-      <script type="text/javascript" src="vendor/scripts/opentip-jquery.min.js"></script>
       <script type="text/javascript" src="vendor/scripts/raphael-min.js"></script>
-
-      <!-- Web Fonts -->
-      <link rel="stylesheet" href="fonts/Unicum/stylesheet.css" />
-
-      <!-- Application styles -->
-      <link rel="stylesheet" href="styles/main.css" />
-      <link rel="stylesheet" href="styles/fonts.css" />
 
       <!-- Client-side scripts -->
     	<script src="socket.io/socket.io.js"></script>
 		  <script src="scripts/main.js"></script>
   </head>
   
-  <body>
-    <div class="ipad-area">
-    
-      <div class="state password-area">
-        <h1> Пароль </h1>
-        <button class="enter-password-button pure-button">Ввести пароль</button>
-      </div>
+  <body class="main">
+    <div class="app">  
+      <div class="state password">
 
-      <div class="state feelings-area">
-        <h1> Выбор чувств </h1>
-        <button class="choose-feeling-button pure-button">Выбрать чувство</button>
-      </div>
+        <div class="typing-div">
+          ****
+        </div>
+        
+        <div class="clearfix"></div>
+        
+        <div class="app-button-div">
+            <a class="app-button"></a>
+            <div class="app-button-number">1</div>
+        </div>
+        <div class="app-button-div">
+            <a class="app-button"></a>
+            <div class="app-button-number">2</div>
+        </div>
+        <div class="app-button-div">
+            <a class="app-button"></a>
+            <div class="app-button-number">3</div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="app-button-div">
+            <a class="app-button"></a>
+            <div class="app-button-number">4</div>
+        </div>
+        <div class="app-button-div">
+            <a class="app-button"></a>
+            <div class="app-button-number">5</div>
+        </div>
+        <div class="app-button-div">
+            <a class="app-button"></a>
+            <div class="app-button-number">6</div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="app-button-div">
+            <a class="app-button"></a>
+            <div class="app-button-number">7</div>
+        </div>
+        <div class="app-button-div">
+            <a class="app-button"></a>
+            <div class="app-button-number">8</div>
+        </div>
+        <div class="app-button-div">
+            <a class="app-button"></a>
+            <div class="app-button-number">9</div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="app-button-div">
+            <a class="app-button"></a>
+            <div class="app-button-number">0</div>
+        </div>
 
-      <div class="state animation-area">
-        <h1> Анимация </h1>
-        <button class="end-animation-button pure-button">К паролю</button>
-      </div>
+        </div>
 
+        <div class="state feeling">
+          <h1> Пароль введен верно </h1>
+        </div>
     </div>
-
+    
   </body>
 </html>

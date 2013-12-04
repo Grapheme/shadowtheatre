@@ -1,3 +1,4 @@
+
 $(window).on("load", function() {
 
     // ---------------------------------------------------------------
@@ -13,30 +14,52 @@ $(window).on("load", function() {
         resource : part + "socket.io"
     });
 
+    function operatorMessage(message) {
+        socket.emit("message", message);
+    } 
+
+
+
+    var i = 1;
+    $('.app-button').each(function(){
+        if(i == 10) i = 0;
+        $(this).data("number", i);
+        i++;
+    });
+
+    $('.app-button').bind( "click", function(e){
+        $(this).css('background-image','url(img/button-act.png)');
+        typePassword( $(this).data("number") );
+    });
+
+    var password = "";
+    function typePassword( number ) {
+        password += number;
+        $(".typing-div").text(password);
+
+        if(password.length >= 4) {
+            $.post("password", {password : password})
+            .done(function() {
+                showState("feeling");
+                operatorMessage("Был введен пароль")
+            })
+            .fail(function() {
+            })
+            .always(function() {
+                password = "";
+                $(".typing-div").text(password);
+            });
+        }
+    }
+
 
     window.showState = function(state) {
         var prevStates = $(".state:visible");
-
         prevStates.fadeOut(200);
-
         $(".state." + state).show().addClass("animated fadeInRight");
     }
 
-    showState("password-area");
-
-    $(".enter-password-button").click(function() {
-        showState("feelings-area");
-        socket.emit("message", "Пароль введен!");
-    });
-
-    $(".choose-feeling-button").click(function() {
-        showState("animation-area");
-        socket.emit("message", "Выбрано чувство!")
-    });
-
-    $(".end-animation-button").click(function() {
-        showState("password-area");
-    });
+    showState("password");
 });
 
 
