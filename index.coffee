@@ -40,9 +40,10 @@ app.use express.bodyParser()
 app.use app.router
 app.use express.static( __dirname + "/public" )
 
+port = config.get "http:port"
+server.listen port, ->
+	console.log "Server listening at #{port}"
 
-port = 4000
-server.listen(port)
 
 ###
 # В зависимости от типа устройства отдаем нужную страницу
@@ -71,7 +72,9 @@ app.post "/password", (req, res, next) ->
 ###
 
 io.sockets.on "connection", (socket) ->
-	i = 0
-	setInterval ->
-		socket.emit "message", "Привет #{++i}"
-	, 2000
+
+	# При получении сообщении об изменении состояние рассылаем
+	# его всем остальным клиентам
+	socket.on "message", (message) ->
+		socket.broadcast.emit "message", message
+
