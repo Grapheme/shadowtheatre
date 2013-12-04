@@ -14,18 +14,29 @@ $(window).on("load", function() {
     });
 
 
-	// $(".login-button").click(function() {
+    window.showState = function(state) {
+        var prevStates = $(".state:visible");
 
-	// 	var password = $(".password-input").val();
+        prevStates.fadeOut(200);
 
-	// 	$.post("password", { password : password })
-	// 	.done(function() {
-	// 		console.log("OK!");
-	// 	})
-	// 	.fail(function() {
-	// 		$(".pure-form").addClass("animated wobble");
-	// 	});
-	// });
+        $(".state." + state).show().addClass("animated fadeInRight");
+    }
+
+    showState("password-area");
+
+    $(".enter-password-button").click(function() {
+        showState("feelings-area");
+        socket.emit("message", "Пароль введен!");
+    });
+
+    $(".choose-feeling-button").click(function() {
+        showState("animation-area");
+        socket.emit("message", "Выбрано чувство!")
+    });
+
+    $(".end-animation-button").click(function() {
+        showState("password-area");
+    });
 });
 
 

@@ -31,14 +31,29 @@
       <link rel="stylesheet" href="styles/main.css" />
       <link rel="stylesheet" href="styles/fonts.css" />
 
-
+      <!-- Client-side scripts -->
     	<script src="socket.io/socket.io.js"></script>
 		  <script src="scripts/main.js"></script>
   </head>
   
   <body>
     <div class="ipad-area">
-    	<h1> Привет </h1>
+    
+      <div class="state password-area">
+        <h1> Пароль </h1>
+        <button class="enter-password-button pure-button">Ввести пароль</button>
+      </div>
+
+      <div class="state feelings-area">
+        <h1> Выбор чувств </h1>
+        <button class="choose-feeling-button pure-button">Выбрать чувство</button>
+      </div>
+
+      <div class="state animation-area">
+        <h1> Анимация </h1>
+        <button class="end-animation-button pure-button">К паролю</button>
+      </div>
+
     </div>
 
   </body>
