@@ -1,7 +1,10 @@
 $(window).on("load", function() {
 
+    // ---------------------------------------------------------------
     // Настраиваем socket.io
-    var part = location.pathname.substring(0, location.pathname.lastIndexOf("/")+1);
+    // ---------------------------------------------------------------
+    var part = location.pathname.substring(0, 
+        location.pathname.lastIndexOf("/") + 1);
     if(part[0] === '/') {
         part = part.substring(1);
     }
@@ -9,8 +12,6 @@ $(window).on("load", function() {
     var socket = io.connect(location.origin, {
         resource : part + "socket.io"
     });
-
-    socket.emit("message", "sdfsdf")
 
 
 	// $(".login-button").click(function() {

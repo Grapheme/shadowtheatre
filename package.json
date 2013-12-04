@@ -4,6 +4,7 @@
   "description": "A simple web-application that is used for the \"Shadow Theatre\" performance",
   "main": "index.coffee",
   "scripts": {
+    "start" : "coffee index.coffee",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "molefrog@gmail.com",

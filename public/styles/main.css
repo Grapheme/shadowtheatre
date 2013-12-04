@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5 {
 }
 
 body {
-  background-color: black;
+  background-color: indigo;
   color : white;
 }
 
@@ -18,11 +18,12 @@ body {
 	width  : 768px;
 	height : 928px;
 
-	margin: auto;
+	background-color: black;
+	text-align: center;
+
+	margin-left: -384px;
+
 	position: absolute;
-	top: 50%; left: 50%;
-	-webkit-transform: translate(-50%,-50%);
-	  -ms-transform: translate(-50%,-50%);
-	      transform: translate(-50%,-50%);
+	left: 50%;
 }
 
