@@ -1,5 +1,6 @@
 
 	function drawpath( canvas, pathstr, duration, attr, callback ) {
+
 	    var guide_path = canvas.path( pathstr ).attr( { stroke: "none", fill: "none" } );
 	    var path = canvas.path( guide_path.getSubpath( 0, 1 ) ).attr( attr );
 	    var total_length = guide_path.getTotalLength( guide_path );
@@ -25,6 +26,8 @@
 	    }, interval_length );  
 	    return result;
 	};
+
+
 
 
 
@@ -151,7 +154,9 @@ $(window).load(function() {
 		$(".app:visible").hide(0);
 		$(".app.shadow-animation").show(0);
 
+		$(".app.shadow-animation .shadow-name").text( shadows[shadow].name );
 		animationPaper.clear();
+
 		drawpath(animationPaper, shadows[shadow].path, 5000, { "stroke" : "white"}, function() {
 			callback();
 		});
