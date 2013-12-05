@@ -157,9 +157,7 @@ $(window).load(function() {
 		$(".app.shadow-animation .shadow-name").text( shadows[shadow].name );
 		animationPaper.clear();
 
-		drawpath(animationPaper, shadows[shadow].path, 5000, { "stroke" : "white"}, function() {
-			callback();
-		});
+		superAnimation(animationPaper, shadows[shadow].path, callback);
 	}
 
 	gotoMain();
