@@ -1,0 +1,370 @@
+/* ==========================================================================
+   HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+body {
+	background: url('../img/back.png') no-repeat;
+	background-size: 960px 1160px;
+}
+
+.main {
+	height: 1160px;
+	width: 960px;
+	background: url('../img/back.png') no-repeat;
+	background-size: 960px 1160px;
+}
+
+.shadow {
+	height: 1160px;
+	width: 960px;
+	background: url('../img/back.png') no-repeat;
+	background-size: 960px 1160px;
+	display: none;
+}
+
+.final {
+	height: 1160px;
+	width: 960px;
+	background: url('../img/back.png') no-repeat;
+	background-size: 960px 1160px;
+	display: none;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+@font-face {
+    font-family: 'helveticaneuecyrthin';
+    src: url('../fonts/helveticaneuecyr-thin.eot');
+    src: url('../fonts/helveticaneuecyr-thin.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helveticaneuecyr-thin.woff') format('woff'),
+         url('../fonts/helveticaneuecyr-thin.ttf') format('truetype'),
+         url('../fonts/helveticaneuecyr-thin.svg#helveticaneuecyrthin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'AnnabelleRegular';
+    src: url('../fonts/annabelle.eot');
+    src: url('../fonts/annabelle.eot') format('embedded-opentype'),
+         url('../fonts/annabelle.woff') format('woff'),
+         url('../fonts/annabelle.ttf') format('truetype'),
+         url('../fonts/annabelle.svg#AnnabelleRegular') format('svg');
+}
+
+.app {
+	width: 960px;
+	text-align: center;
+}
+
+.app-in {
+	height: 1160px;
+	width: 960px;
+}
+
+.app-in#one {
+	background-image: url('../img/deluxe1.png'), url('../img/deluxe3.png'), url('../img/girl.png');
+	background-size:  960px 1160px, 960px 1160px, 960px 1000px;
+}
+
+.app-in#two {
+	background-image: url('../img/deluxe1.png'), url('../img/deluxe3.png'), url('../img/girl.png');
+	background-size:  960px 1160px, 960px 1160px, 960px 1000px;
+}
+
+.app-button {
+	display: inline-block;
+	position: absolute;
+	width: 195px;
+	height: 176px;
+	background-image: url('../img/button.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	transition: .5s all ease;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	outline: 0 none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0); 
+}
+
+.app-button:focus {-moz-outline-style: none; outline: 0 none;}
+.app-button:active {-moz-outline-style: none; outline: 0 none;}
+.app-button:hover {	outline: 0 none; }
+
+.app-button-div {
+	display: inline-block;
+	position: relative;
+	width: 195px;
+	height: 155px;
+}
+
+.app-button-number {
+	font-family: 'helveticaneuecyrthin';
+	font-size: 30px;
+	position: absolute;
+	width: 195px;
+	top: 150px;
+	color: #ffffff;
+}
+
+.typing-div {
+	margin-top: 100px;
+	margin-bottom: 80px;
+	display: inline-block;
+	width: 300px;
+	height: 90px;
+	border-radius: 3px;
+	background: url('../img/back-dial.png');
+	text-align: center;
+}
+
+.typing-div span {
+	margin: 25px 25px 0 25px;
+	display: inline-block;
+	color: #ffffff;
+	font-size: 25px;
+}
+
+.shadow-name {
+	font-family: 'AnnabelleRegular';
+	color: #ffffff;
+	font-size: 55px;
+	position: absolute;
+	bottom: 150px;
+	width: 100%;
+	text-align: center;
+}
+
+.start-name {
+	font-family: 'AnnabelleRegular';
+	color: #ffffff;
+	font-size: 55px;
+	position: absolute;
+	width: 700px;
+	text-align: center;
+	top: 400px;
+	padding-left: 130px;
+	padding-right: 130px;
+}
+
+.final-click {
+	position: absolute;
+	top: 920px;
+	height: 100px;
+	width: 100%;
+	z-index: 9999;
+	background: transparent;
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

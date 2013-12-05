@@ -1,94 +1,117 @@
-<html>
-	<head>	
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      
-      <title>Театр Теней</title>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=960px, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
 
-      <meta name="description" content="">
-      <meta name="viewport" content="width=960px, user-scalable=no">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/fotorama.css">
+        
 
-  		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        <img src="img/button-act.png" style="display: none;">
+        <img src="img/button.png" style="display: none;">
 
-      <!-- 3rd party stylesheets -->
-      <link rel="stylesheet" href="vendor/styles/normalize.min.css" />
-      <link rel="stylesheet" href="vendor/styles/animate.min.css" />
-      <link rel="stylesheet" href="styles/h5bp.css" />
-      <link rel="stylesheet" href="styles/fonts.css" />
-      <link rel="stylesheet" href="styles/app.css" />
+    	<div class="app main">
+    	
+    		<div class="typing-div">
+    			<span>*</span><span>*</span><span>*</span><span>*</span>
+    		</div>
+    		
+    		<div class="clearfix"></div>
+    		
+    		<div class="app-button-div">
+        		<a href="#" class="app-button"></a>
+        		<div class="app-button-number">1</div>
+    		</div>
+    		<div class="app-button-div">
+        		<a href="#" class="app-button"></a>
+        		<div class="app-button-number">2</div>
+    		</div>
+    		<div class="app-button-div">
+        		<a href="#" class="app-button"></a>
+        		<div class="app-button-number">3</div>
+    		</div>
+    		<div class="clearfix"></div>
+    		<div class="app-button-div">
+        		<a href="#" class="app-button"></a>
+        		<div class="app-button-number">4</div>
+    		</div>
+    		<div class="app-button-div">
+        		<a href="#" class="app-button"></a>
+        		<div class="app-button-number">5</div>
+    		</div>
+    		<div class="app-button-div">
+        		<a href="#" class="app-button"></a>
+        		<div class="app-button-number">6</div>
+    		</div>
+    		<div class="clearfix"></div>
+    		<div class="app-button-div">
+        		<a href="#" class="app-button"></a>
+        		<div class="app-button-number">7</div>
+    		</div>
+    		<div class="app-button-div">
+        		<a href="#" class="app-button"></a>
+        		<div class="app-button-number">8</div>
+    		</div>
+    		<div class="app-button-div">
+        		<a href="#" class="app-button"></a>
+        		<div class="app-button-number">9</div>
+    		</div>
+    		<div class="clearfix"></div>
+    		<div class="app-button-div">
+        		<a href="#" class="app-button"></a>
+        		<div class="app-button-number">0</div>
+    		</div>
+    	</div>
+    	
+    	<div class="app shadow">
+    		<div class="final-click"></div>
+    		<div class="fotorama" data-width="960" data-height="1160" data-arrows="false" data-loop="true" data-click="false">
+	    		<div>
+	    			<div id="canvas-container"></div>
+		        	<div class="app-in" id="one">
+		        	</div>
+		        	<div class="shadow-name" data-shadow="euphoria">Эйфория</div>
+	        	</div>
 
-      <!-- 3rd party libraries -->
-      <script type="text/javascript" src="vendor/scripts/jquery.min.js"></script>
-      <script type="text/javascript" src="vendor/scripts/jquery.inputmask.js"></script>
-      <script type="text/javascript" src="vendor/scripts/raphael-min.js"></script>
-
-      <!-- Client-side scripts -->
-    	<script src="socket.io/socket.io.js"></script>
-		  <script src="scripts/main.js"></script>
-  </head>
-  
-  <body class="main">
-    <div class="app">  
-      <div class="state password">
-
-        <div class="typing-div">
-          ****
+	        	<div>
+		        	<div class="app-in" id="two">
+		        	</div>
+		        	<div class="shadow-name" data-shadow="love">Любовь</div>
+	        	</div>
+        	</div>
         </div>
         
-        <div class="clearfix"></div>
+        <div class="app final">
+        	<div class="app-in">
+        		<div class="start-name">Мир живого исскуства теней перед вами</div>
+        	</div>
+        </div>
+
+        <script src="js/vendor/jquery-1.9.1.js"></script>
+        <script src="js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
         
-        <div class="app-button-div">
-            <a class="app-button"></a>
-            <div class="app-button-number">1</div>
-        </div>
-        <div class="app-button-div">
-            <a class="app-button"></a>
-            <div class="app-button-number">2</div>
-        </div>
-        <div class="app-button-div">
-            <a class="app-button"></a>
-            <div class="app-button-number">3</div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="app-button-div">
-            <a class="app-button"></a>
-            <div class="app-button-number">4</div>
-        </div>
-        <div class="app-button-div">
-            <a class="app-button"></a>
-            <div class="app-button-number">5</div>
-        </div>
-        <div class="app-button-div">
-            <a class="app-button"></a>
-            <div class="app-button-number">6</div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="app-button-div">
-            <a class="app-button"></a>
-            <div class="app-button-number">7</div>
-        </div>
-        <div class="app-button-div">
-            <a class="app-button"></a>
-            <div class="app-button-number">8</div>
-        </div>
-        <div class="app-button-div">
-            <a class="app-button"></a>
-            <div class="app-button-number">9</div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="app-button-div">
-            <a class="app-button"></a>
-            <div class="app-button-number">0</div>
-        </div>
+		<script src="js/vendor/raphael.js"></script>
 
-        </div>
+        <script src="socket.io/socket.io.js"></script>
 
-        <div class="state feeling">
-          <h1> Пароль введен верно </h1>
-        </div>
-    </div>
-    
-  </body>
+		<script src="js/fotorama.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+    </body>
 </html>
