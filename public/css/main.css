@@ -154,7 +154,7 @@ body {
     display: none;
 }
 
-.app-in {
+.app-in, .app-in-animation {
     position: absolute;
     top: 200px;
     height: 600px;
