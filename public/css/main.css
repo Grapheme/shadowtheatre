@@ -58,6 +58,7 @@ textarea {
 body {
 	background: url('../img/back.png') no-repeat;
 	background-size: 960px 1160px;
+    background-color: black;
 }
 
 .main {
@@ -81,6 +82,14 @@ body {
 	background: url('../img/back.png') no-repeat;
 	background-size: 960px 1160px;
 	display: none;
+}
+
+.shadow-animation {
+    height: 1160px;
+    width: 960px;
+    background: url('../img/back.png') no-repeat;
+    background-size: 960px 1160px;
+    display: none;
 }
 
 

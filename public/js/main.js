@@ -1,30 +1,30 @@
 
-	// function drawpath( canvas, pathstr, duration, attr, callback ) {
-	//     var guide_path = canvas.path( pathstr ).attr( { stroke: "none", fill: "none" } );
-	//     var path = canvas.path( guide_path.getSubpath( 0, 1 ) ).attr( attr );
-	//     var total_length = guide_path.getTotalLength( guide_path );
-	//     var last_point = guide_path.getPointAtLength( 0 );
-	//     var start_time = new Date().getTime();
-	//     var interval_length = 500;
-	//     var result = path;        
+	function drawpath( canvas, pathstr, duration, attr, callback ) {
+	    var guide_path = canvas.path( pathstr ).attr( { stroke: "none", fill: "none" } );
+	    var path = canvas.path( guide_path.getSubpath( 0, 1 ) ).attr( attr );
+	    var total_length = guide_path.getTotalLength( guide_path );
+	    var last_point = guide_path.getPointAtLength( 0 );
+	    var start_time = new Date().getTime();
+	    var interval_length = 500;
+	    var result = path;        
 
-	//     var interval_id = setInterval( function()
-	//     {
-	//         var elapsed_time = new Date().getTime() - start_time;
-	//         var this_length = elapsed_time / duration * total_length;
-	//         var subpathstr = guide_path.getSubpath( 0, this_length );            
-	//         attr.path = subpathstr;
+	    var interval_id = setInterval( function()
+	    {
+	        var elapsed_time = new Date().getTime() - start_time;
+	        var this_length = elapsed_time / duration * total_length;
+	        var subpathstr = guide_path.getSubpath( 0, this_length );            
+	        attr.path = subpathstr;
 
-	//         path.animate( attr, interval_length );
-	//         if ( elapsed_time >= duration )
-	//         {
-	//             clearInterval( interval_id );
-	//             if ( callback != undefined ) callback();
-	//                 guide_path.remove();
-	//         }                                       
-	//     }, interval_length );  
-	//     return result;
-	// };
+	        path.animate( attr, interval_length );
+	        if ( elapsed_time >= duration )
+	        {
+	            clearInterval( interval_id );
+	            if ( callback != undefined ) callback();
+	                guide_path.remove();
+	        }                                       
+	    }, interval_length );  
+	    return result;
+	};
 
 
 
@@ -60,8 +60,6 @@ $(window).load(function() {
 	$(document).bind('touchmove', false);
 
 
-
-
 	// ---
 	// Обработчики нажатия цифровых кнопок
 	// ---
@@ -74,7 +72,7 @@ $(window).load(function() {
 		$(this).removeClass('active');
 	});
 
-	$(".app-button").bind("tap", function() {
+	$(".app-button").bind("vclick", function() {
 		typeThis( $(this).data("number") );
 		clickSound.play();
 	});
@@ -92,51 +90,37 @@ $(window).load(function() {
     });
 
 
-    var canChoose = true;
-
-    var animationDuration = 5000;
-    
     $(".fotorama").bind("tap", function() {
-    	if(!canChoose) return;
 
     	var activeFrame = $($(".fotorama").data("fotorama").activeFrame.html);
 
     	var shadow = activeFrame.data("shadow");
-    	console.log(shadow);
-    	var paper = papers[ shadow ];
 
     	socket.emit("message", shadows[shadow].name);
-    	canChoose = false;
-
-    	shadowsEffect(paper, shadow);
-
-    	setTimeout(function() {
+    	gotoAnimation( shadow, function() {
     		gotoFinal();
-	
-	    	setTimeout(function() {
+
+    		setTimeout(function() {
 	    		canChoose = true;
 	    		gotoMain();
-	    	}, 10000);
-	    }, animationDuration);
+	    	}, 5000);
+    	});
     });
 
 
-	window.papers = {};
+	$.each( $(".app-in"), function(i) {
+		var paper = Raphael( this, 700, 700);
 
-	function prepareShadows() {
-		$(".app-in").each(function(i){
-			this
-			var paper = Raphael( this, 700, 700);
+		var shadow = $(this).parent(".fotorama-slide").data("shadow");
 
-			var shadow = $(this).parent(".fotorama-slide").data("shadow");
-			papers[ shadow ] = paper;
+		if(shadows[shadow]) {
+			var path = paper.path( shadows[shadow].path );
+			path.attr("fill", "black");
+		}
+	});
 
-			if(shadows[shadow]) {
-				var path = paper.path( shadows[shadow].path );
-				path.attr("fill", "black");
-			}
-		});
-	}
+	var animationPaper = Raphael( $(".app-in-animation")[0], 700, 700);
+
 
 	function shadowsEffect(paper, shadow) {
 		paper.circle(50, 50, 50).attr("fill", "white");
@@ -146,13 +130,12 @@ $(window).load(function() {
 	function gotoShadow() {
 		socket.emit("message", "Внимание");
 
-		prepareShadows();
-
 		$('.app:visible').fadeOut(fadeDuration);
 		$('.app.shadow').fadeIn(fadeDuration);
 	}
 
 	function gotoFinal() {
+
 		$('.app:visible').fadeOut(fadeDuration);
 		$('.app.final').fadeIn(fadeDuration);
 	}
@@ -162,6 +145,16 @@ $(window).load(function() {
 
 		$(".app:visible").fadeOut(fadeDuration);
 		$(".app.main").fadeIn(fadeDuration);
+	}
+
+	function gotoAnimation(shadow, callback) {
+		$(".app:visible").hide(0);
+		$(".app.shadow-animation").show(0);
+
+		animationPaper.clear();
+		drawpath(animationPaper, shadows[shadow].path, 5000, { "stroke" : "white"}, function() {
+			callback();
+		});
 	}
 
 	gotoMain();
