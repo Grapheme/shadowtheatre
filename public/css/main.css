@@ -109,6 +109,35 @@ body {
          url('../fonts/annabelle.svg#AnnabelleRegular') format('svg');
 }
 
+.canvas-container {
+    position: absolute;
+    z-index: 666;
+    top : 225px;
+    left : 300px;
+    width : 660px;
+    height : 900px;
+}
+
+.left-arrow, .right-arrow {
+    position :absolute;
+    width : 39px;
+    height: 77px;
+    z-index: 9999;
+
+    top: 50%;
+    margin-top: -38px;
+}
+
+.left-arrow {
+    background-image: url(../img/arrow-left.png);
+    left : 0;
+}
+
+.right-arrow {
+    right : 0;
+    background-image: url(../img/arrow-right.png);
+}
+
 .app {
 	width: 960px;
 	text-align: center;
@@ -120,13 +149,13 @@ body {
 }
 
 .app-in#one {
-	background-image: url('../img/deluxe1.png'), url('../img/deluxe3.png'), url('../img/girl.png');
-	background-size:  960px 1160px, 960px 1160px, 960px 1000px;
+	background-image: url('../img/deluxe1.png'), url('../img/deluxe3.png');
+	background-size:  960px 1160px, 960px 1160px;
 }
 
 .app-in#two {
-	background-image: url('../img/deluxe1.png'), url('../img/deluxe3.png'), url('../img/girl.png');
-	background-size:  960px 1160px, 960px 1160px, 960px 1000px;
+	background-image: url('../img/deluxe1.png'), url('../img/deluxe3.png');
+	background-size:  960px 1160px, 960px 1160px;
 }
 
 .app-button {
@@ -142,7 +171,12 @@ body {
 	left: 0;
 	cursor: pointer;
 	outline: 0 none;
-	-webkit-tap-highlight-color: rgba(0,0,0,0); 
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-user-select: none;
+}
+
+.app-button.active {
+    background-image: url(../img/button-act.png);
 }
 
 .app-button:focus {-moz-outline-style: none; outline: 0 none;}
