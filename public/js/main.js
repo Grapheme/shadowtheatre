@@ -1,21 +1,3 @@
-$(window).load(function() {
-	// ----
-	// Сокеты
-	// ----
-	var part = location.pathname.substring(0, location.pathname.lastIndexOf("/")+1);
-	if(part[0] === '/') {
-		part = part.substring(1);
-	}
-
-	socket = io.connect(location.origin, {
-		resource : part + "socket.io"
-	});
-
-	// ----
-	// Отключаем возможность ресайза и движения окна в браузере
-	// ----
-	$(document).bind('touchmove', false);
-
 
 	// function drawpath( canvas, pathstr, duration, attr, callback ) {
 	//     var guide_path = canvas.path( pathstr ).attr( { stroke: "none", fill: "none" } );
@@ -46,17 +28,55 @@ $(window).load(function() {
 
 
 
+$(window).load(function() {
+
+	soundManager.setup({
+	  preferFlash : false
+	});
+
+	var clickSound = soundManager.createSound({
+	  id: 'mySound',
+	  url: 'audio/click.mp3',
+	  autoLoad: true,
+	  autoPlay: false,
+	  volume: 50
+	});
+
+	// ----
+	// Сокеты
+	// ----
+	var part = location.pathname.substring(0, location.pathname.lastIndexOf("/")+1);
+	if(part[0] === '/') {
+		part = part.substring(1);
+	}
+
+	socket = io.connect(location.origin, {
+		resource : part + "socket.io"
+	});
+
+	// ----
+	// Отключаем возможность ресайза и движения окна в браузере
+	// ----
+	$(document).bind('touchmove', false);
+
+
+
 
 	// ---
 	// Обработчики нажатия цифровых кнопок
 	// ---
 	$('.app-button').bind( "vmousedown", function() {
 		$(this).addClass("active");
-		typeThis( $(this).data("number") );
+		
 	});
 
 	$('.app-button').bind( "vmouseup", function() {
 		$(this).removeClass('active');
+	});
+
+	$(".app-button").bind("tap", function() {
+		typeThis( $(this).data("number") );
+		clickSound.play();
 	});
 
 
@@ -73,15 +93,22 @@ $(window).load(function() {
 
 
     var canChoose = true;
+
+    var animationDuration = 5000;
     
     $(".fotorama").bind("tap", function() {
     	if(!canChoose) return;
 
     	var activeFrame = $($(".fotorama").data("fotorama").activeFrame.html);
-    	var shadow = shadows[ activeFrame.data("shadow") ];
 
-    	socket.emit("message", shadow.name);
+    	var shadow = activeFrame.data("shadow");
+    	console.log(shadow);
+    	var paper = papers[ shadow ];
+
+    	socket.emit("message", shadows[shadow].name);
     	canChoose = false;
+
+    	shadowsEffect(paper, shadow);
 
     	setTimeout(function() {
     		gotoFinal();
@@ -90,34 +117,36 @@ $(window).load(function() {
 	    		canChoose = true;
 	    		gotoMain();
 	    	}, 10000);
-	    }, 2000);
+	    }, animationDuration);
     });
 
-	// $('.fotorama').bind('tap',function(){
-	// 	window.socket.emit("message", "Эйфория");
 
-	//  	// drawpath(window.paper, shadowPaths.euphoria, 4000, {
-	//  	//  	 "stroke" : "white"
-	//  	// }, function() {});
+	window.papers = {};
 
-	//  	setTimeout(function() {
-	// 	gotoFinal();
+	function prepareShadows() {
+		$(".app-in").each(function(i){
+			this
+			var paper = Raphael( this, 700, 700);
 
-	// 		setTimeout(function() {
-	// 		gotoMain();
-	// 		clearType();
-	// 		}, 10000);
-	// 	}, 6000);
-	// });
+			var shadow = $(this).parent(".fotorama-slide").data("shadow");
+			papers[ shadow ] = paper;
 
-	// window.paper = Raphael( $(".canvas-container")[0], 600, 600);
-	// var telka = paper.path( shadowPaths.euphoria );
-	// telka.attr("fill", "#000000");
+			if(shadows[shadow]) {
+				var path = paper.path( shadows[shadow].path );
+				path.attr("fill", "black");
+			}
+		});
+	}
 
+	function shadowsEffect(paper, shadow) {
+		paper.circle(50, 50, 50).attr("fill", "white");
+	}
 
 	var fadeDuration = 750;
 	function gotoShadow() {
 		socket.emit("message", "Внимание");
+
+		prepareShadows();
 
 		$('.app:visible').fadeOut(fadeDuration);
 		$('.app.shadow').fadeIn(fadeDuration);
