@@ -141,6 +141,8 @@ body {
 .app {
 	width: 960px;
 	text-align: center;
+    cursor: pointer;
+    display: none;
 }
 
 .app-in {
@@ -187,7 +189,7 @@ body {
 	display: inline-block;
 	position: relative;
 	width: 195px;
-	height: 155px;
+	height: 180px;
 }
 
 .app-button-number {
@@ -195,7 +197,7 @@ body {
 	font-size: 30px;
 	position: absolute;
 	width: 195px;
-	top: 150px;
+	top: 140px;
 	color: #ffffff;
 }
 
