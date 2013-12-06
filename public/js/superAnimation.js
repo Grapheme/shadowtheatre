@@ -1,5 +1,5 @@
 var options = {
-	fillColor : "black"
+	fillColor : "none"
 };
 
 function random( min, max ) {
@@ -36,7 +36,7 @@ Particle.prototype = {
 		this.vy += Math.cos( this.theta ) * 0.05;
 
 		this.radius *= 0.9;
-		this.alive = this.radius > 0.2;
+		this.alive = this.radius > 0.3;
 
 		this.elem.attr("cx", this.x);
 		this.elem.attr("cy", this.y);
@@ -55,14 +55,14 @@ function superAnimation(paper, path, callback) {
 		.attr("stroke-width", "2");
 
 	var len = p.getTotalLength();
-	var period = 40;
+	var period = 55;
 	var l = 0;
 
 	var particles = [];
 	var pool = [];
 
 	function tick() {
-		l += 0.006;
+		l += 0.01;
 		if(l > 1.2) return callback();
 
 		var point = p.getPointAtLength(len * l);
@@ -70,7 +70,7 @@ function superAnimation(paper, path, callback) {
 		dp.attr({ path : p.getSubpath(0, len * l) });
 
 		if(l <= 1 ){
-			for(var i =0; i < Math.floor(random(2, 10)); ++i) {
+			for(var i =0; i < Math.floor(random(0, 3)); ++i) {
 				var particle = new Particle(point.x, point.y,  point.alpha);
 
 				var c = Math.floor( random(220, 255) );

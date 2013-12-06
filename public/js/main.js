@@ -106,7 +106,7 @@ $(window).load(function() {
     		setTimeout(function() {
 	    		canChoose = true;
 	    		gotoMain();
-	    	}, 5000);
+	    	}, 10000);
     	});
     });
 
