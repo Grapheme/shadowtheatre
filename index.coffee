@@ -56,11 +56,10 @@ app.get "/", (req, res) ->
 ###
 # Проверка пароля
 ###
-app.post "/password", (req, res, next) ->
+app.post "/password", (req, res) ->
 	if req.body.password in config.get("passwords")
 		return res.json {}
-
-	return next new Error "Wrong password!"
+	res.send 503
 
 
 ###
