@@ -130,19 +130,20 @@ $(window).load(function() {
 	//  Логика ввода пароля
 	// ---
 	var pass = "";
-	var pass_allow = true;
 
-String.prototype.repeat = function(times) {
-   return (new Array(times + 1)).join(this);
-};
+	String.prototype.repeat = function(times) {
+	   return (new Array(times + 1)).join(this);
+	};
+
 	var pass = "";
 	function typeThis(number) {
-		if(!pass_allow) return;
-		
-		pass += number;
-		$(".typing-div").text( pass + "*".repeat(4 - pass.length) );
 
-		if( pass.length >= 4) {
+		if(pass.length < 4) {
+			pass += number;
+			$(".typing-div").text( pass + "*".repeat(4 - pass.length) );
+		}
+
+		if( pass.length === 4) {
 			$.post("password", {password : pass})
 			.done(function() {
 				gotoShadow();
@@ -161,8 +162,6 @@ String.prototype.repeat = function(times) {
 
 
 	function clearType() {
-		$('.app-button').effect("shake", {times: 3, distance: 10}, function(){
-			setTimeout(function() { pass_allow = true; }, 300);
-		});
+		$('.app-button').effect("shake", {times: 3, distance: 10});
 	}
 });
