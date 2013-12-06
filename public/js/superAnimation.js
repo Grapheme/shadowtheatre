@@ -1,3 +1,7 @@
+var options = {
+	fillColor : "black"
+};
+
 function random( min, max ) {
 	return min + Math.random() * ( max - min );
 }
@@ -5,16 +9,16 @@ function random( min, max ) {
 function Particle( x, y, theta ) {
 	this.alive = true;
 
-	this.radius = random(0, 3);
-	this.theta = random( 0, Math.PI * 2 );
-
 	this.x = x;
 	this.y = y;
 
-	this.wander = random( 0.1, 4.0 );
+	this.radius = random(0, 5);
+	this.theta = random( 0, Math.PI * 2 );
+
+	this.wander = random( 0.1, 1.0 );
 	this.drag = random( 0.9, 0.99 );
 
-	var force = random( 0, 2 );
+	var force = random( 1, 3 );
 	this.vx = Math.sin( theta ) * force;
 	this.vy = Math.cos( theta ) * force;
 }
@@ -28,11 +32,11 @@ Particle.prototype = {
 		this.vy *= this.drag;
 
 		this.theta += random( -0.5, 0.5 ) * this.wander;
-		this.vx += Math.sin( this.theta ) * 0.01;
-		this.vy += Math.cos( this.theta ) * 0.01 + 0.05;
+		this.vx += Math.sin( this.theta ) * 0.05;
+		this.vy += Math.cos( this.theta ) * 0.05;
 
 		this.radius *= 0.9;
-		this.alive = this.radius > 0.02;
+		this.alive = this.radius > 0.2;
 
 		this.elem.attr("cx", this.x);
 		this.elem.attr("cy", this.y);
@@ -42,27 +46,39 @@ Particle.prototype = {
 
 
 function superAnimation(paper, path, callback) {
-	var p = paper.path(path).attr("fill", "black").attr("stroke", "none");
+	var p = paper.path(path)
+		.attr("fill", options.fillColor)
+		.attr("stroke", "none");
+
+	var dp = paper.path("")
+		.attr("stroke", "white")
+		.attr("stroke-width", "2");
 
 	var len = p.getTotalLength();
-	var period = 35;
+	var period = 40;
 	var l = 0;
 
 	var particles = [];
 	var pool = [];
 
 	function tick() {
-		l += 0.005;
-		if(l > 1) return callback();
+		l += 0.006;
+		if(l > 1.2) return callback();
 
 		var point = p.getPointAtLength(len * l);
 
+		dp.attr({ path : p.getSubpath(0, len * l) });
 
-		for(var i =0; i < 4; ++i) {
-			var particle = new Particle(point.x, point.y, point.alpha);
-			particle.elem = paper.circle(particle.x, particle.y, particle.radius)
-				.attr("fill", "white").attr("stroke", "none");
-			particles.push( particle );
+		if(l <= 1 ){
+			for(var i =0; i < Math.floor(random(2, 10)); ++i) {
+				var particle = new Particle(point.x, point.y,  point.alpha);
+
+				var c = Math.floor( random(220, 255) );
+				particle.elem = paper.circle(particle.x, particle.y, particle.radius)
+					.attr("fill", "rgb(" + c + "," + c + "," + c + ")")
+					.attr("stroke", "none");
+				particles.push( particle );
+			}
 		}
 
 		for (var i = particles.length - 1; i >= 0; i-- ) {
