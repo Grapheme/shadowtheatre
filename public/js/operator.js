@@ -1,14 +1,19 @@
-$(window).on("load", function() {
-	var part = location.pathname.substring(0, location.pathname.lastIndexOf("/")+1);
-	if(part[0] === '/') {
-		part = part.substring(1);
-	}
+$(function() {
+	var updateInterval = 703;
 
-	var socket = io.connect(location.origin, {
-		resource : part + "socket.io"
-	});
+	function updateMessage() {
+		$.get("/message")
+		.done(function(message) {
+			$(".notification-area").text(message.message);
+		})
+		.fail(function() {
+			$(".notification-area").text("Проблема соединения!");
+		})
+		.always(function() {
+			setTimeout(updateMessage, updateInterval);
+		});
 
-	socket.on("message", function(message) {
-		$(".notification-area").text(message);
-	});
+	};
+
+	updateMessage();
 });

@@ -1,19 +1,23 @@
 
 $(window).load(function() {
+
+	var currentMessage = "";
+
+	var updateInterval = 1000;
+	function updateMessage() {
+		$.post("/message", { message : currentMessage })
+		.done(function() {
+		})
+		.fail(function() {
+		})
+		.always(function() {
+			setTimeout(updateMessage, updateInterval);
+		});
+	}
+	updateMessage();
+
 	$(".extra-button").bind("tap", function() {
 		location.reload(false);
-	});
-
-	// ----
-	// Сокеты
-	// ----
-	var part = location.pathname.substring(0, location.pathname.lastIndexOf("/")+1);
-	if(part[0] === '/') {
-		part = part.substring(1);
-	}
-
-	socket = io.connect(location.origin, {
-		resource : part + "socket.io"
 	});
 
 	// ----
@@ -62,7 +66,8 @@ $(window).load(function() {
 
     	var shadow = activeFrame.data("shadow");
 
-    	socket.emit("message", shadows[shadow].name);
+    	currentMessage = shadows[shadow].name;
+
     	gotoAnimation( shadow, function() {
     		gotoFinal();
 
@@ -95,7 +100,7 @@ $(window).load(function() {
 
 	var fadeDuration = 750;
 	function gotoShadow() {
-		socket.emit("message", "Внимание");
+		currentMessage = "Внимание";
 
 		$('.app:visible').fadeOut(fadeDuration);
 		$('.app.shadow').fadeIn(fadeDuration);
@@ -108,7 +113,7 @@ $(window).load(function() {
 	}
 
 	function gotoMain() {
-		socket.emit("message", "");
+		currentMessage = "";
 
 		$(".app:visible").fadeOut(fadeDuration);
 		$(".app.main").fadeIn(fadeDuration);
@@ -147,7 +152,6 @@ $(window).load(function() {
 			$.post("password", {password : pass})
 			.done(function() {
 				gotoShadow();
-
 			})
 			.fail(function() {
 				pass_allow = false;

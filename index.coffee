@@ -1,6 +1,5 @@
 express  = require "express"
 _ 		 = require "underscore"
-socketio = require "socket.io"
 uaparser = require "ua-parser-js"
 config   = require "nconf"
 
@@ -27,15 +26,11 @@ config.file
 ###
 app = express()
 server = http.createServer(app)
-io = socketio.listen(server)
-
-io.set "log level", 0
 
 
 ###
 # Настройка middleware
 ###
-app.use express.logger "short"
 app.use express.bodyParser()
 app.use app.router
 app.use express.static( __dirname + "/public" )
@@ -67,14 +62,17 @@ app.post "/password", (req, res, next) ->
 
 	return next new Error "Wrong password!"
 
-###
-# Socket.io stuff
-###
 
-io.sockets.on "connection", (socket) ->
+###
+# Смена сообщения оператора
+###
+currentMessage = ""
+app.get "/message", (req, res) ->
+	res.json 
+		message : currentMessage
 
-	# При получении сообщении об изменении состояние рассылаем
-	# его всем остальным клиентам
-	socket.on "message", (message) ->
-		socket.broadcast.emit "message", message
+app.post "/message", (req, res) ->
+	currentMessage = req.body.message
+	res.json {}
+
 
