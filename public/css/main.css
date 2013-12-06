@@ -118,6 +118,23 @@ body {
          url('../fonts/annabelle.svg#AnnabelleRegular') format('svg');
 }
 
+.extra-button {
+    position: fixed;
+    left : 0;
+    top : 0;
+
+    cursor: pointer;
+   /* background-color: blue; */
+    width : 100px;
+    height : 100px;
+    z-index: 999999;
+
+    cursor: pointer;
+    outline: 0 none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-user-select: none;
+}
+
 .canvas-container {
     position: absolute;
     z-index: 666;

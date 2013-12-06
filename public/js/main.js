@@ -1,5 +1,8 @@
 
 $(window).load(function() {
+	$(".extra-button").bind("tap", function() {
+		location.reload(false);
+	});
 
 	// ----
 	// Сокеты
@@ -74,6 +77,7 @@ $(window).load(function() {
 		if(shadows[shadow]) {
 			var path = paper.path( shadows[shadow].path );
 			path.attr("fill", window.options.fillColor);
+			path.attr("stroke", "none");
 		}
 	});
 
