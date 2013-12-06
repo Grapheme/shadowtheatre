@@ -137,6 +137,8 @@ String.prototype.repeat = function(times) {
 };
 	var pass = "";
 	function typeThis(number) {
+		if(!pass_allow) return;
+		
 		pass += number;
 		$(".typing-div").text( pass + "*".repeat(4 - pass.length) );
 
@@ -147,6 +149,7 @@ String.prototype.repeat = function(times) {
 
 			})
 			.fail(function() {
+				pass_allow = false;
 				clearType();
 			})
 			.always(function() {
