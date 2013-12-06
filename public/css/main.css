@@ -238,6 +238,12 @@ body {
 	margin-bottom: 80px;
 	display: inline-block;
 	width: 300px;
+    line-height: 90px;
+    color : #eeeeee;
+    letter-spacing: 25px;
+    padding-left: 25px;
+    font-weight: 400;
+    font-size: 25px;
 	height: 90px;
 	border-radius: 3px;
 	background: url('../img/back-dial.png');

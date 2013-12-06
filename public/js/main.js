@@ -25,17 +25,22 @@ $(window).load(function() {
 	// ---
 	// Обработчики нажатия цифровых кнопок
 	// ---
-	$('.app-button').bind( "vmousedown", function() {
+	var canType = true;
+
+	$('.app-button').bind( "vmousedown", function(e) {
+		if(canType) {
+			var number = $(e.target).attr("data-number");
+			typeThis( number );
+			canType = false;
+		}
+
 		$(this).addClass("active");
 		
 	});
 
 	$('.app-button').bind( "vmouseup", function() {
+		canType = true;
 		$(this).removeClass('active');
-	});
-
-	$(".app-button").bind("vclick", function() {
-		typeThis( $(this).data("number") );
 	});
 
 
@@ -127,35 +132,33 @@ $(window).load(function() {
 	var pass = "";
 	var pass_allow = true;
 
+String.prototype.repeat = function(times) {
+   return (new Array(times + 1)).join(this);
+};
+	var pass = "";
 	function typeThis(number) {
-		if(pass_allow) {
-			if ( $('.closed')[0] ) {
-				$('.closed').last().next().html(number).addClass('closed');
-			} else {
-				$('.typing-div span').first().html(number);
-				$('.typing-div span').first().addClass('closed');
-			}
-			pass += number;
-			if(pass.length == 4) {
-				$.post("password", {password : pass})
-				.done(function() {
-					pass = "";
-					$('.closed').html('*').removeClass('closed');
-					gotoShadow();
+		pass += number;
+		$(".typing-div").text( pass + "*".repeat(4 - pass.length) );
 
-				})
-				.fail(function() {
-					pass_allow = false;
-					clearType();
-					pass = "";
-				});
-			}
+		if( pass.length >= 4) {
+			$.post("password", {password : pass})
+			.done(function() {
+				gotoShadow();
+
+			})
+			.fail(function() {
+				clearType();
+			})
+			.always(function() {
+				pass = "";
+				$(".typing-div").text( "****" );
+			});
 		}
 	}
 
+
 	function clearType() {
 		$('.app-button').effect("shake", {times: 3, distance: 10}, function(){
-			$('.closed').html('*').removeClass('closed');
 			setTimeout(function() { pass_allow = true; }, 300);
 		});
 	}
