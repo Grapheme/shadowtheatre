@@ -55,7 +55,7 @@ function superAnimation(paper, path, callback) {
 		.attr("stroke-width", "2");
 
 	var len = p.getTotalLength();
-	var period = 55;
+	var period = 45;
 	var l = 0;
 
 	var particles = [];
@@ -67,34 +67,36 @@ function superAnimation(paper, path, callback) {
 
 		var point = p.getPointAtLength(len * l);
 
+
 		dp.attr({ path : p.getSubpath(0, len * l) });
-
-		if(l <= 1 ){
-			for(var i =0; i < Math.floor(random(0, 3)); ++i) {
-				var particle = new Particle(point.x, point.y,  point.alpha);
-
-				var c = Math.floor( random(220, 255) );
-				particle.elem = paper.circle(particle.x, particle.y, particle.radius)
-					.attr("fill", "rgb(" + c + "," + c + "," + c + ")")
-					.attr("stroke", "none");
-				particles.push( particle );
-			}
-		}
-
-		for (var i = particles.length - 1; i >= 0; i-- ) {
-			var particle = particles[i];
-
-			if ( particle.alive ) {
-				 particle.move();
-			}
-			else {
-				particles.splice( i, 1 )[0];
-				particle.elem.remove();
-			}
-		}
-
-
+		
 		setTimeout(tick, period);
+
+		// if(l <= 1 ){
+		// 	for(var i =0; i < Math.floor(random(0, 0)); ++i) {
+		// 		var particle = new Particle(point.x, point.y,  point.alpha);
+
+		// 		var c = Math.floor( random(220, 255) );
+		// 		particle.elem = paper.circle(particle.x, particle.y, particle.radius)
+		// 			.attr("fill", "rgb(" + c + "," + c + "," + c + ")")
+		// 			.attr("stroke", "none");
+		// 		particles.push( particle );
+		// 	}
+		// }
+
+		// for (var i = particles.length - 1; i >= 0; i-- ) {
+		// 	var particle = particles[i];
+
+		// 	if ( particle.alive ) {
+		// 		 particle.move();
+		// 	}
+		// 	else {
+		// 		particles.splice( i, 1 )[0];
+		// 		particle.elem.remove();
+		// 	}
+		// }
+
+
 	};
 
 	setTimeout(tick, period);

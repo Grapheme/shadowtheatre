@@ -129,20 +129,26 @@ body {
 
 .left-arrow, .right-arrow {
     position :absolute;
-    width : 39px;
-    height: 77px;
+    width : 100px;
+    height: 600px;
     z-index: 9999;
 
+    background-repeat: no-repeat;
+
     top: 50%;
-    margin-top: -38px;
+    margin-top: -300px;
 }
 
 .left-arrow {
+
+    background-position: left center;
     background-image: url(../img/arrow-left.png);
     left : 0;
 }
 
 .right-arrow {
+
+    background-position: right center;
     right : 0;
     background-image: url(../img/arrow-right.png);
 }

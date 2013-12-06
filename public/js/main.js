@@ -33,18 +33,6 @@
 
 $(window).load(function() {
 
-	soundManager.setup({
-	  preferFlash : false
-	});
-
-	var clickSound = soundManager.createSound({
-	  id: 'mySound',
-	  url: 'audio/click.mp3',
-	  autoLoad: true,
-	  autoPlay: false,
-	  volume: 50
-	});
-
 	// ----
 	// Сокеты
 	// ----
@@ -77,7 +65,6 @@ $(window).load(function() {
 
 	$(".app-button").bind("vclick", function() {
 		typeThis( $(this).data("number") );
-		clickSound.play();
 	});
 
 
