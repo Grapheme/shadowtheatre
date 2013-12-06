@@ -1,5 +1,5 @@
-var options = {
-	fillColor : "none"
+window.options = {
+	fillColor : "#060819"
 };
 
 function random( min, max ) {
