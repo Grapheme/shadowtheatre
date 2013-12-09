@@ -1,7 +1,6 @@
 # Created by http://gitignore.io
 
-# Don't place config file with secret information
-config.json
+.DS_Store
 
 ### Node ###
 lib-cov
